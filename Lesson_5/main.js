@@ -3,12 +3,12 @@ function Cat(name) {
     this.name = name;
     var foodAmount = 50;
 
-    function formatFoodAmount(foodAmount) {
+    function formatFoodAmount() {
         return foodAmount + ' гр.'
     };
 
     this.feed = function () {
-        return ('Насыпаем в миску ' + formatFoodAmount(foodAmount) + ' корма.');
+        return ('Насыпаем в миску ' + formatFoodAmount() + ' корма.');
     };
 };
 
@@ -21,18 +21,24 @@ syam.feed();
 function Cat(name) {
     this.name = name;
     var foodAmount = 0;
+
+    function formatFoodAmount() {
+        return foodAmount + ' гр.'
+    };
+
     this.dailyNorm = function (amount) {
-        if (!arguments.length) return foodAmount;
+        if (!arguments.length) return formatFoodAmount();
 
         if (amount < 50) {
             throw new Error('Слишком мало')
         } else if (amount > 100) {
             throw new Error('Слишком много')
-        } foodAmount = amount;
+        } 
+        foodAmount = amount;
     }
 
     this.feed = function () {
-        return ('Насыпаем в миску ' + this.dailyNorm() + 'гр. корма.');
+        return ('Насыпаем в миску ' + this.dailyNorm() + ' корма.');
     };
 };
 
