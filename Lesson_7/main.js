@@ -58,24 +58,23 @@ barsik.feed();
 
 //Задание 2
 
-
 function Animal(name) {
-    this.name = name;
+    this._name = name;
     this._foodAmount = 50;
-}
+};
 
-Animal.prototype.formatFoodAmount = function () {
-    return this._foodAmount + ' гр.'
+Animal.prototype._formatFoodAmount = function () {
+    return this._foodAmount + ' гр.' ;
 };
 
 Animal.prototype.dailyNorm = function (amount) {
-    if (!arguments.length) return this.formatFoodAmount();
+    if (!arguments.length) return this._formatFoodAmount();
 
     if (amount < 30) {
         throw new Error('Слишком мало')
     } else if (amount > 100) {
         throw new Error('Слишком много')
-    } this._foodAmount = amount;
+    } 
     this._foodAmount = amount;
 };
 
@@ -85,30 +84,27 @@ Animal.prototype.feed = function () {
 
 
 function Cat(name) {
+    this._name = name;
     Animal.apply(this, arguments);
-    Cat.prototype = Object.create (Animal.prototype);
-    /*Cat.prototype = {
-        __proto__: Animal.prototype
-    }; */
-    Cat.prototype.constructor = Cat;
+};
+Cat.prototype = Object.create (Animal.prototype);
+Cat.prototype.constructor = Cat;
 
-    var animalFeed = this.feed;
+var animalFeed = this.feed;
+Cat.prototype.feed = function () {
+    animalFeed();
+    this.moodCat();
+    return this;
+};
 
-    this.feed = function () {
-        animalFeed();
-        this.moodCat();
-        return this;
-    };
+Cat.prototype.moodCat = function () {
+    alert('Кот доволен ^_^');
+    return this;
+};
 
-    this.moodCat = function () {
-        alert('Кот доволен ^_^');
-        return this;
-    };
-
-    this.stroke = function () {
-        alert('Гладим кота ^_^');
-        return this;
-    };
+Cat.prototype.stroke  = function () {
+    alert('Гладим кота ^_^');
+    return this;
 };
 
 var barsik = new Cat('Барсик');
