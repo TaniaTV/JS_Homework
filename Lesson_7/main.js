@@ -59,7 +59,7 @@ barsik.feed();
 //Задание 2
 
 function Animal(name) {
-    this._name = name;
+    this.name = name;
     this._foodAmount = 50;
 };
 
@@ -84,15 +84,13 @@ Animal.prototype.feed = function () {
 
 
 function Cat(name) {
-    this._name = name;
     Animal.apply(this, arguments);
 };
 Cat.prototype = Object.create (Animal.prototype);
 Cat.prototype.constructor = Cat;
 
-var animalFeed = this.feed;
 Cat.prototype.feed = function () {
-    animalFeed();
+    Animal.prototype.feed.apply(this);
     this.moodCat();
     return this;
 };
