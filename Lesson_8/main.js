@@ -14,22 +14,47 @@ filterNumbersArr([-1, 0, 2, 34, -2]);
 
 var arr = [-1, 0, 2, 34, -2];
 
-function filterNumbersArr(v) {
-    return v > 0;
+function filterNumbersArr(arr) {
+    var newArr = arr.filter(function (v) {
+        return v > 0;
+    }); return newArr;
 };
-
-var newArr = arr.filter(filterNumbersArr);
-alert(newArr);
+filterNumbersArr(arr);
 
 // #2 Написать функцию, принимающую массив чисел и возвращающую первое найденное положительное число.
 
 var arr = [-1, 0, 2, 34, -2];
+arr.forEach(function (item, i, arr) {
+    var tr = arr.some(arr[i] > 0);
+    if (tr == true) {
+        return console.log(arr[i]);
+    });
 
+
+function firstPositiveNum(arr) {
+    function isNumber(value) {
+        return value >= 0;
+    }
+
+    if (arr.some(isNumber) == true) {
+        return value
+    };
+};
+firstPositiveNum([-1, 0, 2, 34, -2]);
+
+
+var arr = [-1, 0, 2, 34, -2];
 function filterNumbersArr(v) {
     return v >= 0;
 }
-
 var firstPositiveNum = alert(arr.filter(filterNumbersArr)[0]);
+
+
+[-1, 0, 2, 34, -2].forEach(function (item, index, arr) {
+    if (item > 0) {
+        return item;
+    }
+});
 
 
 /* #3 Написать функцию, которая будет определять, является ли переданное в нее слово палиндромом (напр. шалаш).
@@ -37,16 +62,12 @@ var firstPositiveNum = alert(arr.filter(filterNumbersArr)[0]);
 */
 
 function wordPalindrome(word) {
-    var newWord = word.split("").reverse().join("");
-
-    if (newWord == word) {
-        alert(true);
-    } else {
-        alert(false);
-    } return;
+    var newWord = word.toLowerCase().split("").reverse().join("");
+    word = word.toLowerCase();
+    return newWord == word;
 };
 
-wordPalindrome('шалаш');
+wordPalindrome('Шалаш');
 wordPalindrome('кувшин');
 
 /* #4 Написать функцию, которая будет определять, являются ли переданные в нее слова анаграммами (напр. кот и отк).
@@ -60,11 +81,7 @@ wordPalindrome('кувшин');
 function areAnagrams(word1, word2) {
     var word1New = word1.toLowerCase().split("").sort().join("");
     var word2New = word2.toLowerCase().split("").sort().join("");
-    if (word1New == word2New) {
-        alert(true);
-    } else {
-        alert(false);
-    } return
+    return word1New == word2New;
 };
 areAnagrams('кот', 'Отк');
 areAnagrams('кот', 'атк');
@@ -89,14 +106,10 @@ divideArr([1, 2, 3, 4, 5, 6, 7, 8], 3);
 // #6 Написать функцию, определяющую, является ли переданное в нее число степенью двойки.
 
 function powerTwo(num) {
-    while (num > 2) {
+    while (num > 1) {
         num = num / 2;
     };
-    if (num == 1) {
-        alert(true);
-    } else {
-        alert(false);
-    };
+    return num == 1;
 };
 
 powerTwo(6);
