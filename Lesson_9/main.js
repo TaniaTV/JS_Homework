@@ -1,24 +1,23 @@
 // #1 Написать функцию, принимающую массив имен и возвращающую массив объектов вида {name: 'Vasya'}.
-arr = ['ann', 'kate', 'mari', 'pit',]
+var arr = ['ann', 'kate', 'mari', 'pit',]
 function createObj(arr) {
-    var newArr = [];
-    arr.map(function (i) {
-        arr[i] = { name: i };
-        newArr.push(arr[i]);
+    var newArr = arr.map(function (i) {
+        return arr[i] = { name: i };
     });
     return newArr;
 };
-createObj(arr);
+console.log(createObj(arr))
 
 /* #2 Написать функцию, принимающую массив вида ['00', '13', '24'] и возвращающую строку "Текущее время : 00 : 13 : 24".
 Для решения использовать перебирающий метод массивов (не метод join).
 */
 var arr = ['00', '13', '24'];
 function makeTime(arr) {
-    var time;
-    time = arr.join(':');
-    return '"Текущее время : ' + time + '"';
-}
+    var time = arr[0];
+    arr.reduce(function (index, num) {
+        time += ':' + num;
+    }); return '"Текущее время :' + time + '"';
+};
 alert(makeTime(arr));
 
 /*Задание 3:
