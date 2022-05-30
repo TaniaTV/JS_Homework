@@ -1,0 +1,31 @@
+table {
+  margin-left: 30%;
+}
+
+table,
+table td
+ {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+table td {
+    width: 80px;
+}
+
+table tr{
+    height: 20px;
+}
+input {
+    width: 70px;
+    height: 12px;
+    margin: 0;
+}
+
+.add-row {
+    text-align: center;
+}
+td.my-class {
+   display: none;
+}
+
+
