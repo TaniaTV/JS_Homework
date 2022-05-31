@@ -10,36 +10,32 @@ container.appendChild(firstPar);
 container.appendChild(secondPar);
 
 
-var button1 = document.getElementsByTagName('button');
+var button1 = document.getElementsByTagName('button')[0];
 
-var firstLinks = firstPar.getElementsByTagName('a');
-var firstLinck1 = firstLinks[0];
-var firstLinck2 = firstLinks[1];
+var firstLincks = firstPar.children;
 
-var secondLincks = secondPar.getElementsByTagName('a');
+var secondLincks = secondPar.children;
 
-var secondLinck1 = secondLincks[0];
-var secondLinck2 = secondLincks[1];
-
-button1.onclick = function changeColor1() {
-  firstLinck1.classList.toggle('changed');
-  firstLinck2.classList.toggle('changed');
+button1.onclick = function () {
+  for (var i = 0; i < firstLincks.length; i++) {
+    firstLincks[i].classList.toggle('changed');
+  }
 };
-
 
 secondPar.addEventListener('click', changeColor2)
-function changeColor2() {
-  secondLinck1.classList.toggle('changed');
-  secondLinck2.classList.toggle('changed');
+function changeColor2(event) {
+  if (event.target.tagName == 'A') return;
+  for (var i = 0; i < secondLincks.length; i++) {
+    secondLincks[i].classList.toggle('changed');
+  }
 };
 
-
 secondPar.onclick = function (event) {
-  if (event.target.nodeName != 'A') return;
+  if (event.target.tagName !== 'A') return;
+  event.preventDefault();
   var hrefText = event.target.getAttribute('href');
   alert(hrefText);
-  return false;
-}
+};
 
 /*
   Практическое задание (продолжение предыдущего задания):

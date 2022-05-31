@@ -1,7 +1,7 @@
 var buttonAddRow = document.getElementById('addRowButton');
 var table = document.getElementById('theTable');
 
-buttonAddRow.addEventListener("click", addRow);
+buttonAddRow.addEventListener('click', addRow);
 
 function addRow() {
   var newRow = table.insertRow(0);
